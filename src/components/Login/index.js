@@ -73,29 +73,31 @@ class Login extends React.PureComponent {
   render() {
     // 整个组件被一个id="loginDIV"的div包围, 样式都设置到这个div中
     return (
-      <div id="loginDIV">
-
+      <div id="loginBox">
         {/*debug模式下显示fork me on github*/}
-        {globalConfig.debug &&
-        <a href="https://github.com/jiangxy/react-antd-admin">
-          <img style={{position: 'absolute', top: 0, right: 0, border: 0}}
-               src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67"
-               alt="Fork me on GitHub"
-               data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"/>
-        </a>}
+        {/*{globalConfig.debug &&*/}
+        {/*<a href="https://github.com/jiangxy/react-antd-admin">*/}
+        {/*  <img style={{position: 'absolute', top: 0, right: 0, border: 0}}*/}
+        {/*       src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67"*/}
+        {/*       alt="Fork me on GitHub"*/}
+        {/*       data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"/>*/}
+        {/*</a>}*/}
 
         <div className="login">
-          <h1>{globalConfig.name}</h1>
-          <form onSubmit={this.handleSubmit}>
-            <input className="login-input" type="text" value={this.state.username}
-                   onChange={this.handleUsernameInput} placeholder="用户名" required="required"/>
-            <input className="login-input" type="password" value={this.state.password}
-                   onChange={this.handlePasswordInput} placeholder="密码" required="required"/>
-            <button className="btn btn-primary btn-block btn-large"
-                    type="submit" disabled={this.state.requesting}>
-              登录
-            </button>
-          </form>
+            <div className="loginTitle">{globalConfig.name}</div>
+            <div className="loginForm">
+              <h4 className="formTitle">登录</h4>
+              <form onSubmit={this.handleSubmit}>
+                <input className="login-input" type="text" value={this.state.username}
+                       onChange={this.handleUsernameInput} placeholder="用户名" required="required"/>
+                <input className="login-input" type="password" value={this.state.password}
+                       onChange={this.handlePasswordInput} placeholder="密码" required="required"/>
+                <button className="btn btn-primary btn-block btn-large"
+                        type="submit" disabled={this.state.requesting}>
+                  登录
+                </button>
+              </form>
+            </div>
         </div>
 
       </div>

@@ -86,10 +86,9 @@ class App extends React.Component {
         const res = await ajax.getCurrentUser();
         hide();
 
-        // 注意这里, debug模式下每次刷新都必须重新登录
+        // debug模式下每次刷新都必须重新登录
         if (res.success && !globalConfig.debug) {
-          // 这里不需要setState了, 因为setState的目的是为了re-render, 而下一句会触发redux的状态变化, 也会re-render
-          // 所以直接修改状态, 就是感觉这么做有点奇怪...
+          // 这里不需要setState了, 因为setState的目的是为了re-render, 而下一句会触发redux的状态变化, 也会re-render，直接修改状态
           this.state.tryingLogin = false;
           // App组件也可能触发loginSuccess action
           this.props.handleLoginSuccess(res.data);
@@ -120,8 +119,7 @@ class App extends React.Component {
   }
 
 
-  // 下面开始是tab相关逻辑
-
+  // tab相关逻辑
 
   /**
    * 解析menu.js中的配置, 找到所有叶子节点对应的key和名称
@@ -149,11 +147,10 @@ class App extends React.Component {
       }
     };
 
-    // 又是dfs, 每次用js写这种就觉得很神奇...
     sidebarMenu.forEach(browseMenu);
     headerMenu.forEach(browseMenu);
 
-    // 最后要手动增加一个key, 对应于404页面
+    // 手动增加一个key, 对应于404页面
     tabTitleMap.set('*', <span className="ant-layout-tab-text"><Icon type="frown-o"/>Error</span>);
     return tabTitleMap;
   }
@@ -167,7 +164,7 @@ class App extends React.Component {
     const routes = props.routes;
     let key = routes[routes.length - 1].path;  // react-router传入的key
 
-    // 如果key有问题, 就直接隐藏所有tab, 这样简单点
+    // 如果key有问题, 直接隐藏所有tab
     if (!key || !this.tabTitleMap.has(key)) {
       this.state.tabPanes.length = 0;
       return;

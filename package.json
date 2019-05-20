@@ -1,22 +1,17 @@
 {
-  "name": "react-antd-admin",
+  "name": "Risk-Control-System",
   "version": "1.0.0",
-  "description": "React Admin Boilerplate, with React + Ant Design",
-  "author": "jiangxy <foolbeargm@gmail.com>",
+  "description": "ZYXFJR Risk Control System, with React + Ant Design",
+  "author": "xiewenjing",
   "license": "Apache-2.0",
   "engines": {
     "node": ">=5.0 <7",
     "npm": ">=3.3 <4"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:jiangxy/react-antd-admin.git"
-  },
   "keywords": [
     "ant",
     "react",
-    "admin",
-    "frontend"
+    "webpack"
   ],
   "devDependencies": {
     "antd": "2.7.1",
@@ -58,6 +53,7 @@
     "webpack-dev-server": "1.16.2"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "superagent": "2.3.0"
   },
   "scripts": {

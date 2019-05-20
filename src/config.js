@@ -4,25 +4,19 @@
 
 'use strict';
 
-// 约定优于配置
-// 我可以提供尽量多的配置, 但尽量不要太个性化, 接口的路径/名称/格式之类的
-// 遵循统一的规范, 好维护, 交给其他人也比较简单
-
 module.exports = {
-  name: 'OOXX管理后台',  // 项目的名字
-  favicon: 'http://jxy.me/favicon.ico',  // 设置网页的favicon, 可以是外链, 也可以是本地
-  footer: '<a target="_blank" href="http://jxy.me">foolbear</a>版权所有 © 2015-2099',  // footer中显示的字, 可以嵌入html标签
-
-  debug: true,  // 是否开启debug模式, 不会请求后端接口, 使用mock的数据
-
+  name: '风险控制管理后台',
+  favicon: 'https://www.hnzycfc.com/favicon.ico',
+  footer: 'Copyright © 中原消费金融技术部出品',
+  debug: true,
   tabMode: {  // tab模式相关配置
     enable: false,  // 是否开启tab模式
     allowDuplicate: false,  // 同一个菜单项只允许一个tab
   },
 
   log: {
-    level: 'info',  // 日志级别, 类似slf4j中的root logger, 目前支持debug/info/warn/error 4种级别
-    // 除了root logger以外, 也可以为每个logger单独设置级别
+    level: 'info',  // 日志级别, 支持debug/info/warn/error 4种级别
+    // 除了root logger以外, 可以为每个logger单独设置级别
     debug: [],
     info: [],
     warn: [],
@@ -119,8 +113,6 @@ module.exports = {
     }
 
     const paths = [];
-
-    // js的字符串处理真是麻烦
     if (this.isCrossDomain()) {
       // 去除结尾的'/'
       const tmp = this.api.host;

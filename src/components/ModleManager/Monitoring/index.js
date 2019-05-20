@@ -1,28 +1,25 @@
 import React from 'react';
 import './index.less';
-import http from "../../utils/httpRequest";
 import { Button } from 'antd';
 
 
 
 /**
- * 测试用
+ * 模型监控
  */
-class Hello extends React.PureComponent {
+class Monitoring extends React.PureComponent {
   constructor(props) {
     super(props);
     this.handler = this.handler.bind(this);
   }
 
   handler() {
-
-    http.get('/',{});
-
+    alert("OK");
   }
 
   render() {
     return <div>
-      <h1 className="testStyle">Hello, React!</h1>
+      <h1 className="testStyle">模型监控</h1>
       <button onClick={this.handler}>click</button>
       <Button type="primary" icon="search">
         Search
@@ -33,4 +30,4 @@ class Hello extends React.PureComponent {
 
 }
 
-export default Hello;
+export default Monitoring;

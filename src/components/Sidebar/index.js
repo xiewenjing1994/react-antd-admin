@@ -10,8 +10,8 @@ import globalConfig from 'config.js';
 import './index.less';
 import {sidebarCollapseCreator} from '../../redux/Sidebar.js';
 
-const SubMenu = Menu.SubMenu;
-const MenuItem = Menu.Item;
+const SubMenu = Menu.SubMenu;//AntDesign中的组件
+const MenuItem = Menu.Item;//AntDesign中的组件
 
 const logger = Logger.getLogger('Sidebar');
 
@@ -38,13 +38,10 @@ class Sidebar extends React.PureComponent {
    */
   transFormMenuItem(obj, paths, isLevel1) {
     const parentPath = paths.join('/');   // 将各级父目录组合成完整的路径
+    // join() 方法用于把数组中的所有元素放入一个字符串。元素是通过指定的分隔符进行分隔的。
     logger.debug('transform %o to path %s', obj, parentPath);
 
-    // 这个表达式还是有点恶心的...
-    // JSX虽然方便, 但是很容易被滥用, ES6也是
     // 注意这里的样式, 用chrome一点点调出来的...
-    // 我的css都是野路子, 头痛医头脚痛医脚, 哪里显示有问题就去调一下, 各种inline style
-    // 估计事后去看的话, 我都忘了为什么要加这些样式...
     return (
       <MenuItem key={obj.key} style={{ margin: '0px' }}>
         {obj.icon && <Icon type={obj.icon}/>}
@@ -64,11 +61,12 @@ class Sidebar extends React.PureComponent {
 
     // 菜单项是从配置中读取的, parse过程还是有点复杂的
     // map函数很好用
+    // js数组的map()方法操作json数组,利用map方法方便获得对象数组中的特定属性值们
     const menu = items.map((level1) => {
       // parse一级菜单
       paths.push(level1.key);
       level1KeySet.add(level1.key);
-      if (this.state.openKeys.length === 0) {
+      if (this.state.openKeys.length === 0) {// 如果state中没有展开任何菜单
         this.state.openKeys.push(level1.key);  // 默认展开第一个菜单, 直接修改state, 没必要setState
       }
 
@@ -77,9 +75,9 @@ class Sidebar extends React.PureComponent {
         const level2menu = level1.child.map((level2) => {
           // parse二级菜单
           paths.push(level2.key);
-          level2KeyMap.set(level2.key, level1.key);
+          level2KeyMap.set(level2.key, level1.key); // 关系：option1-->index
 
-          if (level2.child) {
+          if (level2.child) {//如果有三级菜单
             const level3menu = level2.child.map((level3) => {
               // parse三级菜单, 不能再有子菜单了, 即使有也会忽略
               paths.push(level3.key);
